@@ -1,0 +1,50 @@
+flowchart TB
+    subgraph STATE["Network State Model"]
+        DM[Device Model]
+        IM[Interface Model]
+        RM[Routing Model]
+        NM[Neighbour Model]
+    end
+
+    subgraph NX["NetworkX DiGraph"]
+        NODES[Nodes: SW1, R1, R2, R3, R4]
+        EDGES[Edges: links with<br/>subnet, ospf_cost, status]
+    end
+
+    subgraph CURRENT["Current-State Analysis"]
+        LPM[Longest Prefix Match<br/>per hop]
+        NHR[Next-Hop Resolver<br/>IP → device]
+        HOP[Hop-by-Hop Walk<br/>source → destination]
+        ECMP[ECMP Detector<br/>equal-cost entries]
+    end
+
+    subgraph ALT["Optional Topology Analysis"]
+        ASP[nx.all_simple_paths<br/>alternative hints]
+    end
+
+    subgraph SIM["Post-Change Simulation"]
+        COPY[Deep Copy NetworkState]
+        SR[Static Route Update]
+        OC[OSPF Cost Edge Update]
+        REPATH[Re-run Path Analyzer]
+    end
+
+    subgraph COMPARE["Comparison"]
+        DIFF[Path Diff<br/>nodes, links, reachability]
+        WARN[Warning Generator]
+    end
+
+    DM & IM & RM & NM --> NODES
+    NM --> EDGES
+
+    RM --> LPM
+    LPM --> NHR --> HOP
+    LPM --> ECMP
+    NODES & EDGES --> ASP
+
+    HOP -->|current path| DIFF
+    COPY --> SR
+    COPY --> OC
+    SR & OC --> REPATH
+    REPATH -->|simulated path| DIFF
+    DIFF --> WARN

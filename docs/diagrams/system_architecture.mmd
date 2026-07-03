@@ -1,0 +1,100 @@
+flowchart TB
+    subgraph UI["Presentation Layer — Streamlit"]
+        DASH[Dashboard]
+        INV[Inventory Page]
+        COLL[Live Collection Page]
+        PATH[Path Analysis Page]
+        SIM[Post-Change Simulation Page]
+        CMP[Comparison Page]
+        EXP[Export Page]
+    end
+
+    subgraph APP["Application Orchestration"]
+        APP_CORE[app.py + Session State]
+    end
+
+    subgraph ACCESS["Device Access Layer — Netmiko"]
+        CM[Connection Manager]
+        CP[Command Profiles]
+        NC[Netmiko Collector]
+        SW[Snapshot Writer]
+    end
+
+    subgraph PARSE["Parsing Layer"]
+        RP[Route Parser]
+        IP[Interface Parser]
+        AP[ARP Parser]
+        CF[Config Parser]
+        NP[Neighbour Parser]
+        NORM[Normaliser]
+    end
+
+    subgraph GRAPH["Graph & Analysis — NetworkX"]
+        GB[Graph Builder]
+        PA[Path Analyzer]
+        EC[ECMP Detector]
+        NH[Next-Hop Resolver]
+    end
+
+    subgraph SIMENG["Simulation Layer"]
+        RS[Static Route Simulator]
+        OS[OSPF Cost Simulator]
+        CC[Change Comparator]
+    end
+
+    subgraph VIZ["Visualisation"]
+        TV[Topology Visualiser]
+        PH[Path Highlighter]
+        RR[Report Renderer]
+    end
+
+    subgraph DATA["Data Layer"]
+        INVFILE[(inventory.json)]
+        CRED[(credentials.json — local only)]
+        SNAP[(snapshots/)]
+    end
+
+    DASH --> APP_CORE
+    INV --> APP_CORE
+    COLL --> APP_CORE
+    PATH --> APP_CORE
+    SIM --> APP_CORE
+    CMP --> APP_CORE
+    EXP --> APP_CORE
+
+    APP_CORE --> INVFILE
+    APP_CORE --> CRED
+    APP_CORE --> NC
+    NC --> CM
+    NC --> CP
+    NC --> SW
+    SW --> SNAP
+
+    SNAP --> RP
+    SNAP --> IP
+    SNAP --> AP
+    SNAP --> CF
+    SNAP --> NP
+    RP --> NORM
+    IP --> NORM
+    AP --> NORM
+    CF --> NORM
+    NP --> NORM
+
+    NORM --> GB
+    GB --> PA
+    PA --> EC
+    PA --> NH
+
+    APP_CORE --> RS
+    APP_CORE --> OS
+    RS --> CC
+    OS --> CC
+    PA --> CC
+
+    CC --> TV
+    CC --> PH
+    CC --> RR
+    TV --> DASH
+    PH --> CMP
+    RR --> EXP

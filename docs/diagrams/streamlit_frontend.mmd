@@ -1,0 +1,42 @@
+flowchart TB
+    subgraph ENTRY["Entry Point"]
+        APP[app.py<br/>sidebar navigation]
+    end
+
+    subgraph PAGES["Streamlit Pages"]
+        P1[01 Dashboard<br/>metrics + last result]
+        P2[02 Inventory<br/>load device list]
+        P3[03 Live Collection<br/>trigger Netmiko run]
+        P4[04 Path Analysis<br/>source/dest IP input]
+        P5[05 Post-Change Simulation<br/>static route / OSPF cost]
+        P6[06 Comparison<br/>current vs simulated]
+        P7[07 Export<br/>JSON / Markdown report]
+    end
+
+    subgraph SESSION["st.session_state"]
+        S1[inventory]
+        S2[current_snapshot]
+        S3[network_state]
+        S4[current_path]
+        S5[simulated_path]
+        S6[warnings]
+    end
+
+    subgraph VIZ["Visual Components"]
+        TOPO[Topology Graph View]
+        PATHV[Path Highlight View<br/>green=current, blue=simulated]
+        TABLE[Results Tables]
+    end
+
+    APP --> P1 & P2 & P3 & P4 & P5 & P6 & P7
+
+    P2 --> S1
+    P3 --> S2
+    P4 --> S3 & S4
+    P5 --> S5
+    P4 & P5 & P6 --> S6
+
+    P1 --> S2 & S4 & S6
+    P6 --> PATHV & TABLE
+    P4 --> TOPO
+    P7 --> TABLE

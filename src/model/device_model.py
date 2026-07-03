@@ -1,0 +1,1 @@
+"""Device metadata objects."""
