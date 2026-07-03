@@ -1,0 +1,32 @@
+[
+  {
+    "hostname": "R1",
+    "mgmt_ip": "192.168.1.11",
+    "platform": "cisco_ios",
+    "role": "router"
+  },
+  {
+    "hostname": "R2",
+    "mgmt_ip": "192.168.1.12",
+    "platform": "cisco_ios",
+    "role": "router"
+  },
+  {
+    "hostname": "R3",
+    "mgmt_ip": "192.168.1.13",
+    "platform": "cisco_ios",
+    "role": "router"
+  },
+  {
+    "hostname": "R4",
+    "mgmt_ip": "192.168.1.14",
+    "platform": "cisco_ios",
+    "role": "router"
+  },
+  {
+    "hostname": "SW1",
+    "mgmt_ip": "192.168.1.10",
+    "platform": "cisco_ios",
+    "role": "switch"
+  }
+]
