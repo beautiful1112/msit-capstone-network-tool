@@ -1,5 +1,9 @@
-# Local architecture reference (not for public repo)
+# Local design documents (submitted via Word / kept for local development)
 ARCHITECTURE.md
+docs/SYSTEM_DESIGN.md
+
+# Diagram source files (render to PNG for assignment submission)
+docs/diagrams/*.mmd
 
 # Credentials and secrets
 credentials.json
