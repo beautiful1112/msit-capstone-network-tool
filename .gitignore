@@ -5,8 +5,12 @@ docs/SYSTEM_DESIGN.md
 # Diagram source files (render to PNG for assignment submission)
 docs/diagrams/*.mmd
 
+# Local inventory override (optional; example file is committed)
+data/inventory/inventory.json
+
 # Credentials and secrets
 credentials.json
+data/credentials.json
 *.credentials.json
 .env
 .env.*
