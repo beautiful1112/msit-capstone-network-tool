@@ -1,0 +1,9 @@
+Value Filldown DEVICE_ID (.+)
+Value IP_ADDRESS (\d+\.\d+\.\d+\.\d+)
+Value LOCAL_INTERFACE ([^,]+)
+Value REMOTE_INTERFACE (.+)
+
+Start
+  ^Device ID:\s*${DEVICE_ID}$$
+  ^\s+IP address:\s*${IP_ADDRESS}$$
+  ^Interface:\s*${LOCAL_INTERFACE},\s+Port ID \(outgoing port\):\s*${REMOTE_INTERFACE}$$ -> Record

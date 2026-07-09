@@ -1,0 +1,8 @@
+Value NETWORK (\d+\.\d+\.\d+\.\d+)
+Value MASK (\d+\.\d+\.\d+\.\d+)
+Value NEXTHOP (\S+)
+Value DISTANCE (\d+)
+
+Start
+  ^ip route\s+${NETWORK}\s+${MASK}\s+${NEXTHOP}\s+${DISTANCE}$$ -> Record
+  ^ip route\s+${NETWORK}\s+${MASK}\s+${NEXTHOP}$$ -> Record

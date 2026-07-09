@@ -38,6 +38,27 @@ def test_parse_arp_from_fixture():
     assert entries[0].ip_address == "192.168.12.2"
 
 
+def test_parse_routes_ecmp_continuation():
+    text = (FIXTURES / "sw1_ecmp_route.txt").read_text(encoding="utf-8")
+    routes = parse_routes(text)
+    ecmp_routes = [r for r in routes if r.prefix == "8.8.8.8/32"]
+    assert len(ecmp_routes) == 2
+    next_hops = {route.next_hop for route in ecmp_routes}
+    assert next_hops == {"10.0.12.2", "10.0.11.2"}
+
+
+def test_parse_live_sw1_routes_from_lab_snapshot():
+    snapshot = Path(__file__).resolve().parents[1] / "data" / "sample_outputs" / "lab_snapshot_20260707"
+    if not (snapshot / "SW1_ip_route.txt").exists():
+        pytest.skip("Lab snapshot not available")
+    text = (snapshot / "SW1_ip_route.txt").read_text(encoding="utf-8")
+    routes = parse_routes(text, device="SW1")
+    prefixes = {route.prefix for route in routes}
+    assert "8.8.8.8/32" in prefixes
+    assert "10.1.1.0/24" in prefixes
+    assert len([r for r in routes if r.prefix == "8.8.8.8/32"]) >= 2
+
+
 def test_build_network_state_from_snapshot(tmp_path: Path):
     snapshot = tmp_path / "current_test"
     snapshot.mkdir()

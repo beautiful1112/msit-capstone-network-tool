@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- /home/zhao/capstone/Capstone/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/zhao/capstone/Capstone
+plugins: anyio-4.14.1
+collecting ... collected 8 items
+
+tests/test_parsers.py::test_parse_routes_from_fixture PASSED             [ 12%]
+tests/test_parsers.py::test_parse_interfaces_from_fixture PASSED         [ 25%]
+tests/test_parsers.py::test_parse_arp_from_fixture PASSED                [ 37%]
+tests/test_parsers.py::test_parse_routes_ecmp_continuation PASSED        [ 50%]
+tests/test_parsers.py::test_parse_live_sw1_routes_from_lab_snapshot PASSED [ 62%]
+tests/test_parsers.py::test_build_network_state_from_snapshot PASSED     [ 75%]
+tests/test_path_analyzer.py::test_path_pc1_to_r3_loopback PASSED         [ 87%]
+tests/test_path_analyzer.py::test_path_unknown_source PASSED             [100%]
+
+============================== 8 passed in 0.06s ===============================

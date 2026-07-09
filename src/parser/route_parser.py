@@ -1,42 +1,26 @@
-"""Parses show ip route output into structured route entries."""
-
-import re
+"""Parses show ip route output into structured route entries using TextFSM."""
 
 from src.model.network_model import RouteEntry
-from src.parser.base_parser import non_empty_lines, parse_prefix_and_mask
+from src.parser.base_parser import parse_prefix_and_mask
+from src.parser.textfsm_engine import parse_with_textfsm
 
-ROUTE_VIA = re.compile(
-    r"^([A-Z\*]{1,3})\s+(\S+)\s+\[(\d+)/(\d+)\]\s+via\s+(\S+)(?:,.*,\s+(\S+))?\s*$"
-)
-ROUTE_CONNECTED = re.compile(
-    r"^C\s+(\S+)\s+is directly connected,\s+(\S+)\s*$"
-)
-ROUTE_LOCAL = re.compile(
-    r"^L\s+(\S+)\s+is directly connected,\s+(\S+)\s*$"
-)
-ROUTE_VIA_SHORT = re.compile(
-    r"^([A-Z\*]{1,3})\s+(\S+)\s+\[(\d+)/(\d+)\]\s+via\s+(\S+)\s*$"
-)
+ROUTE_TEMPLATE = "cisco_ios_show_ip_route.textfsm"
 
 
 def parse_routes(text: str, device: str | None = None) -> list[RouteEntry]:
     routes: list[RouteEntry] = []
-    for raw_line in non_empty_lines(text):
-        line = raw_line.strip()
-        if line.startswith("Codes:") or line.startswith("Gateway"):
-            continue
-        if "subnetted" in line or line.endswith("masks"):
-            continue
-
-        connected = ROUTE_CONNECTED.match(line) or ROUTE_LOCAL.match(line)
-        if connected:
-            prefix = parse_prefix_and_mask(connected.group(1))
+    for row in parse_with_textfsm(ROUTE_TEMPLATE, text):
+        protocol = row["PROTOCOL"]
+        is_connected = protocol in {"C", "L"}
+        if is_connected:
+            if not row.get("NEXTHOP_IF"):
+                continue
             routes.append(
                 RouteEntry(
-                    prefix=prefix,
+                    prefix=parse_prefix_and_mask(row["NETWORK"]),
                     protocol="connected",
                     next_hop=None,
-                    out_interface=connected.group(2),
+                    out_interface=row["NEXTHOP_IF"],
                     metric=0,
                     administrative_distance=0,
                     is_connected=True,
@@ -44,23 +28,18 @@ def parse_routes(text: str, device: str | None = None) -> list[RouteEntry]:
             )
             continue
 
-        via_match = ROUTE_VIA.match(line) or ROUTE_VIA_SHORT.match(line)
-        if via_match:
-            protocol = via_match.group(1).strip()
-            prefix = parse_prefix_and_mask(via_match.group(2))
-            admin_distance = int(via_match.group(3))
-            metric = int(via_match.group(4))
-            next_hop = via_match.group(5)
-            out_interface = via_match.group(6) if via_match.lastindex >= 6 else None
-            routes.append(
-                RouteEntry(
-                    prefix=prefix,
-                    protocol=protocol,
-                    next_hop=next_hop,
-                    out_interface=out_interface,
-                    metric=metric,
-                    administrative_distance=admin_distance,
-                    is_connected=False,
-                )
+        if not row.get("DISTANCE") or not row.get("METRIC"):
+            continue
+
+        routes.append(
+            RouteEntry(
+                prefix=parse_prefix_and_mask(row["NETWORK"]),
+                protocol=protocol,
+                next_hop=row.get("NEXTHOP_IP") or None,
+                out_interface=row.get("NEXTHOP_IF") or None,
+                metric=int(row["METRIC"]),
+                administrative_distance=int(row["DISTANCE"]),
+                is_connected=False,
             )
+        )
     return routes

@@ -1,34 +1,26 @@
-"""Parses show ip interface brief output."""
-
-import re
+"""Parses show ip interface brief output using TextFSM."""
 
 from src.model.network_model import InterfaceEntry
-from src.parser.base_parser import non_empty_lines, normalize_interface_name
+from src.parser.base_parser import normalize_interface_name
+from src.parser.textfsm_engine import parse_with_textfsm
 
-INTERFACE_LINE = re.compile(
-    r"^(\S+)\s+(\d+\.\d+\.\d+\.\d+|unassigned)\s+\S+\s+\S+\s+(\S+)\s+(\S+)\s*$"
-)
+INTERFACE_TEMPLATE = "cisco_ios_show_ip_interface_brief.textfsm"
 
 
 def parse_interfaces(text: str) -> list[InterfaceEntry]:
     interfaces: list[InterfaceEntry] = []
-    for raw_line in non_empty_lines(text):
-        line = raw_line.strip()
-        if line.lower().startswith("interface"):
-            continue
-        match = INTERFACE_LINE.match(line)
-        if not match:
-            continue
-        name = normalize_interface_name(match.group(1))
-        ip_address = None if match.group(2) == "unassigned" else match.group(2)
+    for row in parse_with_textfsm(INTERFACE_TEMPLATE, text):
+        ip_address = row["IPADDR"]
+        if ip_address == "unassigned":
+            ip_address = None
         prefix = f"{ip_address}/32" if ip_address else None
         interfaces.append(
             InterfaceEntry(
-                interface=name,
+                interface=normalize_interface_name(row["INTERFACE"]),
                 ip_address=ip_address,
                 prefix=prefix,
-                status=match.group(3).lower(),
-                protocol=match.group(4).lower(),
+                status=row["STATUS"].lower(),
+                protocol=row["PROTOCOL"].lower(),
             )
         )
     return interfaces

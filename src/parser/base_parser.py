@@ -1,4 +1,8 @@
-"""Shared parser utilities."""
+"""Shared parser utilities.
+
+CLI field extraction is performed by TextFSM templates in templates/.
+This module provides normalisation helpers used after TextFSM parsing.
+"""
 
 import re
 from typing import Iterable

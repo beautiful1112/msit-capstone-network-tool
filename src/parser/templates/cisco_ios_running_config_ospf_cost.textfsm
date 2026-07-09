@@ -1,0 +1,14 @@
+Value INTERFACE (\S+)
+Value COST (\d+)
+
+Start
+  ^interface\s+${INTERFACE}$$ -> Intf
+  ^ip route.*$$ ->
+  ^!.*$$ ->
+  ^\s*$$ ->
+
+Intf
+  ^\s+ip ospf cost\s+${COST}$$ -> Record
+  ^interface\s+${INTERFACE}$$ -> Intf
+  ^!.*$$ ->
+  ^\S -> Start

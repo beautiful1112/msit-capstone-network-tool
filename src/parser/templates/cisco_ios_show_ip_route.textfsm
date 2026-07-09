@@ -1,0 +1,16 @@
+Value Filldown PROTOCOL (\S+)
+Value Filldown NETWORK (\S+)
+Value DISTANCE (\d+)
+Value METRIC (\d+)
+Value NEXTHOP_IP (\d+\.\d+\.\d+\.\d+)
+Value NEXTHOP_IF (\S+)
+
+Start
+  ^Codes:.*$$ ->
+  ^Gateway.*$$ ->
+  ^\s+\S+\s+subnetted.*$$ ->
+  ^\s+[A-Z].*$$ ->
+  ^${PROTOCOL}\s+${NETWORK}\s+is directly connected,\s+${NEXTHOP_IF}$$ -> Record
+  ^${PROTOCOL}\s+${NETWORK}\s+\[${DISTANCE}/${METRIC}\]\s+via\s+${NEXTHOP_IP}\s*,\s+\S+,\s+${NEXTHOP_IF}$$ -> Record
+  ^${PROTOCOL}\s+${NETWORK}\s+\[${DISTANCE}/${METRIC}\]\s+via\s+${NEXTHOP_IP}$$ -> Record
+  ^\s+\[${DISTANCE}/${METRIC}\]\s+via\s+${NEXTHOP_IP}\s*,\s+\S+,\s+${NEXTHOP_IF}$$ -> Record
