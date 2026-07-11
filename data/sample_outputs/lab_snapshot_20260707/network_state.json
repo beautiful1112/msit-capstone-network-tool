@@ -1,0 +1,1486 @@
+{
+  "snapshot_id": "lab_snapshot_20260707",
+  "devices": {
+    "R1": {
+      "hostname": "R1",
+      "routes": [
+        {
+          "prefix": "1.1.1.1/32",
+          "protocol": "O",
+          "next_hop": "10.13.1.2",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "8.8.8.8/32",
+          "protocol": "O",
+          "next_hop": "10.13.1.2",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.0.11.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.0.11.2/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.0.12.0/30",
+          "protocol": "O",
+          "next_hop": "10.0.11.1",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.1.1.0/24",
+          "protocol": "O",
+          "next_hop": "10.0.11.1",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.2.2.0/24",
+          "protocol": "O",
+          "next_hop": "10.0.11.1",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.13.1.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.13.1.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.23.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.13.1.2",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.24.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.13.1.2",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.24.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.0.11.1",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.34.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.13.1.2",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "192.168.1.0/24",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "192.168.1.11/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        }
+      ],
+      "interfaces": [
+        {
+          "interface": "GigabitEthernet0/0",
+          "ip_address": "10.0.11.2",
+          "prefix": "10.0.11.2/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/1",
+          "ip_address": "10.13.1.1",
+          "prefix": "10.13.1.1/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/3",
+          "ip_address": "192.168.1.11",
+          "prefix": "192.168.1.11/32",
+          "status": "up",
+          "protocol": "up"
+        }
+      ],
+      "arp": [
+        {
+          "ip_address": "10.0.11.1",
+          "mac_address": "5000.0003.0000",
+          "interface": "GigabitEthernet0/0",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.0.11.2",
+          "mac_address": "5000.0001.0000",
+          "interface": "GigabitEthernet0/0",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.13.1.1",
+          "mac_address": "5000.0001.0001",
+          "interface": "GigabitEthernet0/1",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.13.1.2",
+          "mac_address": "5000.0006.0001",
+          "interface": "GigabitEthernet0/1",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.10",
+          "mac_address": "5000.0003.83e7",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.11",
+          "mac_address": "5000.0001.0003",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.100",
+          "mac_address": "000c.2901.30df",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        }
+      ],
+      "static_routes": [],
+      "ospf_costs": [],
+      "neighbors": [
+        {
+          "local_interface": "GigabitEthernet0/0",
+          "remote_device": "SW1",
+          "remote_interface": "GigabitEthernet0/0",
+          "remote_ip": "10.0.11.1"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "SW1",
+          "remote_interface": "GigabitEthernet1/3",
+          "remote_ip": "192.168.1.10"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R2",
+          "remote_interface": "GigabitEthernet0/2",
+          "remote_ip": "192.168.1.12"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R3",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.13"
+        },
+        {
+          "local_interface": "GigabitEthernet0/1",
+          "remote_device": "R3",
+          "remote_interface": "GigabitEthernet0/1",
+          "remote_ip": "10.13.1.2"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R4",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.14"
+        },
+        {
+          "local_interface": "",
+          "remote_device": "R4",
+          "remote_interface": "",
+          "remote_ip": "192.168.1.14"
+        }
+      ]
+    },
+    "R2": {
+      "hostname": "R2",
+      "routes": [
+        {
+          "prefix": "1.1.1.1/32",
+          "protocol": "O",
+          "next_hop": "10.24.1.2",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "8.8.8.8/32",
+          "protocol": "O",
+          "next_hop": "10.23.1.2",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.0.11.0/30",
+          "protocol": "O",
+          "next_hop": "10.0.12.1",
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.0.12.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.0.12.2/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.1.1.0/24",
+          "protocol": "O",
+          "next_hop": "10.0.12.1",
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.2.2.0/24",
+          "protocol": "O",
+          "next_hop": "10.0.12.1",
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.13.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.23.1.2",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.23.1.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.23.1.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.24.1.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.24.1.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.34.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.24.1.2",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.34.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.23.1.2",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "192.168.1.0/24",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "192.168.1.12/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        }
+      ],
+      "interfaces": [
+        {
+          "interface": "GigabitEthernet0/0",
+          "ip_address": "10.23.1.1",
+          "prefix": "10.23.1.1/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/1",
+          "ip_address": "10.24.1.1",
+          "prefix": "10.24.1.1/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/2",
+          "ip_address": "192.168.1.12",
+          "prefix": "192.168.1.12/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/3",
+          "ip_address": "10.0.12.2",
+          "prefix": "10.0.12.2/32",
+          "status": "up",
+          "protocol": "up"
+        }
+      ],
+      "arp": [
+        {
+          "ip_address": "10.0.12.1",
+          "mac_address": "5000.0003.0003",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.0.12.2",
+          "mac_address": "5000.0002.0003",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.23.1.1",
+          "mac_address": "5000.0002.0000",
+          "interface": "GigabitEthernet0/0",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.23.1.2",
+          "mac_address": "5000.0006.0000",
+          "interface": "GigabitEthernet0/0",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.24.1.1",
+          "mac_address": "5000.0002.0001",
+          "interface": "GigabitEthernet0/1",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.24.1.2",
+          "mac_address": "5000.0007.0001",
+          "interface": "GigabitEthernet0/1",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.12",
+          "mac_address": "5000.0002.0002",
+          "interface": "GigabitEthernet0/2",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.100",
+          "mac_address": "000c.2901.30df",
+          "interface": "GigabitEthernet0/2",
+          "entry_type": "ARPA"
+        }
+      ],
+      "static_routes": [],
+      "ospf_costs": [],
+      "neighbors": [
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "SW1",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "10.0.12.1"
+        },
+        {
+          "local_interface": "GigabitEthernet0/2",
+          "remote_device": "SW1",
+          "remote_interface": "GigabitEthernet1/3",
+          "remote_ip": "192.168.1.10"
+        },
+        {
+          "local_interface": "GigabitEthernet0/2",
+          "remote_device": "R3",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.13"
+        },
+        {
+          "local_interface": "GigabitEthernet0/0",
+          "remote_device": "R3",
+          "remote_interface": "GigabitEthernet0/0",
+          "remote_ip": "10.23.1.2"
+        },
+        {
+          "local_interface": "GigabitEthernet0/2",
+          "remote_device": "R1",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.11"
+        },
+        {
+          "local_interface": "GigabitEthernet0/2",
+          "remote_device": "R4",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.14"
+        },
+        {
+          "local_interface": "GigabitEthernet0/1",
+          "remote_device": "R4",
+          "remote_interface": "GigabitEthernet0/1",
+          "remote_ip": "10.24.1.2"
+        },
+        {
+          "local_interface": "",
+          "remote_device": "R4",
+          "remote_interface": "",
+          "remote_ip": "10.24.1.2"
+        }
+      ]
+    },
+    "R3": {
+      "hostname": "R3",
+      "routes": [
+        {
+          "prefix": "1.1.1.1/32",
+          "protocol": "O",
+          "next_hop": "10.34.1.2",
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "8.8.8.8/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "Loopback0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.0.11.0/30",
+          "protocol": "O",
+          "next_hop": "10.13.1.1",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.0.12.0/30",
+          "protocol": "O",
+          "next_hop": "10.23.1.1",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.1.1.0/24",
+          "protocol": "O",
+          "next_hop": "10.23.1.1",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.1.1.0/24",
+          "protocol": "O",
+          "next_hop": "10.13.1.1",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.2.2.0/24",
+          "protocol": "O",
+          "next_hop": "10.23.1.1",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.2.2.0/24",
+          "protocol": "O",
+          "next_hop": "10.13.1.1",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.13.1.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.13.1.2/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.23.1.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.23.1.2/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.24.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.34.1.2",
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.24.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.23.1.1",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.34.1.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.34.1.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "192.168.1.0/24",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "192.168.1.13/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        }
+      ],
+      "interfaces": [
+        {
+          "interface": "GigabitEthernet0/0",
+          "ip_address": "10.23.1.2",
+          "prefix": "10.23.1.2/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/1",
+          "ip_address": "10.13.1.2",
+          "prefix": "10.13.1.2/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/2",
+          "ip_address": "10.34.1.1",
+          "prefix": "10.34.1.1/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/3",
+          "ip_address": "192.168.1.13",
+          "prefix": "192.168.1.13/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "Loopback0",
+          "ip_address": "8.8.8.8",
+          "prefix": "8.8.8.8/32",
+          "status": "up",
+          "protocol": "up"
+        }
+      ],
+      "arp": [
+        {
+          "ip_address": "10.13.1.1",
+          "mac_address": "5000.0001.0001",
+          "interface": "GigabitEthernet0/1",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.13.1.2",
+          "mac_address": "5000.0006.0001",
+          "interface": "GigabitEthernet0/1",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.23.1.1",
+          "mac_address": "5000.0002.0000",
+          "interface": "GigabitEthernet0/0",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.23.1.2",
+          "mac_address": "5000.0006.0000",
+          "interface": "GigabitEthernet0/0",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.34.1.1",
+          "mac_address": "5000.0006.0002",
+          "interface": "GigabitEthernet0/2",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.34.1.2",
+          "mac_address": "5000.0007.0002",
+          "interface": "GigabitEthernet0/2",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.13",
+          "mac_address": "5000.0006.0003",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.100",
+          "mac_address": "000c.2901.30df",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        }
+      ],
+      "static_routes": [],
+      "ospf_costs": [],
+      "neighbors": [
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "SW1",
+          "remote_interface": "GigabitEthernet1/3",
+          "remote_ip": "192.168.1.10"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R2",
+          "remote_interface": "GigabitEthernet0/2",
+          "remote_ip": "192.168.1.12"
+        },
+        {
+          "local_interface": "GigabitEthernet0/0",
+          "remote_device": "R2",
+          "remote_interface": "GigabitEthernet0/0",
+          "remote_ip": "10.23.1.1"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R1",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.11"
+        },
+        {
+          "local_interface": "GigabitEthernet0/1",
+          "remote_device": "R1",
+          "remote_interface": "GigabitEthernet0/1",
+          "remote_ip": "10.13.1.1"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R4",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.14"
+        },
+        {
+          "local_interface": "GigabitEthernet0/2",
+          "remote_device": "R4",
+          "remote_interface": "GigabitEthernet0/2",
+          "remote_ip": "10.34.1.2"
+        },
+        {
+          "local_interface": "",
+          "remote_device": "R4",
+          "remote_interface": "",
+          "remote_ip": "10.34.1.2"
+        }
+      ]
+    },
+    "R4": {
+      "hostname": "R4",
+      "routes": [
+        {
+          "prefix": "1.1.1.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "Loopback0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "8.8.8.8/32",
+          "protocol": "O",
+          "next_hop": "10.34.1.1",
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.0.11.0/30",
+          "protocol": "O",
+          "next_hop": "10.34.1.1",
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.0.11.0/30",
+          "protocol": "O",
+          "next_hop": "10.24.1.1",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.0.12.0/30",
+          "protocol": "O",
+          "next_hop": "10.24.1.1",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.1.1.0/24",
+          "protocol": "O",
+          "next_hop": "10.24.1.1",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.2.2.0/24",
+          "protocol": "O",
+          "next_hop": "10.24.1.1",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.13.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.34.1.1",
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.23.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.34.1.1",
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.23.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.24.1.1",
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.24.1.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.24.1.2/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/1",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.34.1.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.34.1.2/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/2",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "192.168.1.0/24",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "192.168.1.14/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        }
+      ],
+      "interfaces": [
+        {
+          "interface": "GigabitEthernet0/1",
+          "ip_address": "10.24.1.2",
+          "prefix": "10.24.1.2/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/2",
+          "ip_address": "10.34.1.2",
+          "prefix": "10.34.1.2/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/3",
+          "ip_address": "192.168.1.14",
+          "prefix": "192.168.1.14/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "Loopback0",
+          "ip_address": "1.1.1.1",
+          "prefix": "1.1.1.1/32",
+          "status": "up",
+          "protocol": "up"
+        }
+      ],
+      "arp": [
+        {
+          "ip_address": "10.24.1.1",
+          "mac_address": "5000.0002.0001",
+          "interface": "GigabitEthernet0/1",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.24.1.2",
+          "mac_address": "5000.0007.0001",
+          "interface": "GigabitEthernet0/1",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.34.1.1",
+          "mac_address": "5000.0006.0002",
+          "interface": "GigabitEthernet0/2",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.34.1.2",
+          "mac_address": "5000.0007.0002",
+          "interface": "GigabitEthernet0/2",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.10",
+          "mac_address": "5000.0003.83e7",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.14",
+          "mac_address": "5000.0007.0003",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.100",
+          "mac_address": "000c.2901.30df",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        }
+      ],
+      "static_routes": [],
+      "ospf_costs": [],
+      "neighbors": [
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "SW1",
+          "remote_interface": "GigabitEthernet1/3",
+          "remote_ip": "192.168.1.10"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R2",
+          "remote_interface": "GigabitEthernet0/2",
+          "remote_ip": "192.168.1.12"
+        },
+        {
+          "local_interface": "GigabitEthernet0/1",
+          "remote_device": "R2",
+          "remote_interface": "GigabitEthernet0/1",
+          "remote_ip": "10.24.1.1"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R3",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.13"
+        },
+        {
+          "local_interface": "GigabitEthernet0/2",
+          "remote_device": "R3",
+          "remote_interface": "GigabitEthernet0/2",
+          "remote_ip": "10.34.1.1"
+        },
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R1",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.11"
+        },
+        {
+          "local_interface": "",
+          "remote_device": "R1",
+          "remote_interface": "",
+          "remote_ip": "192.168.1.11"
+        }
+      ]
+    },
+    "SW1": {
+      "hostname": "SW1",
+      "routes": [
+        {
+          "prefix": "1.1.1.1/32",
+          "protocol": "O",
+          "next_hop": "10.0.12.2",
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "8.8.8.8/32",
+          "protocol": "O",
+          "next_hop": "10.0.12.2",
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "8.8.8.8/32",
+          "protocol": "O",
+          "next_hop": "10.0.11.2",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.0.11.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.0.11.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.0.12.0/30",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.0.12.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.1.1.0/24",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "Vlan10",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.1.1.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "Vlan10",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.2.2.0/24",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "Vlan20",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.2.2.1/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "Vlan20",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "10.13.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.0.11.2",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.23.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.0.12.2",
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.24.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.0.12.2",
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 2,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.34.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.0.12.2",
+          "out_interface": "GigabitEthernet0/3",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "10.34.1.0/30",
+          "protocol": "O",
+          "next_hop": "10.0.11.2",
+          "out_interface": "GigabitEthernet0/0",
+          "metric": 3,
+          "administrative_distance": 110,
+          "is_connected": false
+        },
+        {
+          "prefix": "192.168.1.0/24",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "Vlan999",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        },
+        {
+          "prefix": "192.168.1.10/32",
+          "protocol": "connected",
+          "next_hop": null,
+          "out_interface": "Vlan999",
+          "metric": 0,
+          "administrative_distance": 0,
+          "is_connected": true
+        }
+      ],
+      "interfaces": [
+        {
+          "interface": "GigabitEthernet0/0",
+          "ip_address": "10.0.11.1",
+          "prefix": "10.0.11.1/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/1",
+          "ip_address": null,
+          "prefix": null,
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/2",
+          "ip_address": null,
+          "prefix": null,
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet0/3",
+          "ip_address": "10.0.12.1",
+          "prefix": "10.0.12.1/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet1/0",
+          "ip_address": null,
+          "prefix": null,
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet1/1",
+          "ip_address": null,
+          "prefix": null,
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet1/2",
+          "ip_address": null,
+          "prefix": null,
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "GigabitEthernet1/3",
+          "ip_address": null,
+          "prefix": null,
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "Vlan10",
+          "ip_address": "10.1.1.1",
+          "prefix": "10.1.1.1/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "Vlan20",
+          "ip_address": "10.2.2.1",
+          "prefix": "10.2.2.1/32",
+          "status": "up",
+          "protocol": "up"
+        },
+        {
+          "interface": "Vlan999",
+          "ip_address": "192.168.1.10",
+          "prefix": "192.168.1.10/32",
+          "status": "up",
+          "protocol": "up"
+        }
+      ],
+      "arp": [
+        {
+          "ip_address": "10.0.11.1",
+          "mac_address": "5000.0003.0000",
+          "interface": "GigabitEthernet0/0",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.0.11.2",
+          "mac_address": "5000.0001.0000",
+          "interface": "GigabitEthernet0/0",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.0.12.1",
+          "mac_address": "5000.0003.0003",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.0.12.2",
+          "mac_address": "5000.0002.0003",
+          "interface": "GigabitEthernet0/3",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.1.1.1",
+          "mac_address": "5000.0003.800a",
+          "interface": "Vlan10",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.1.1.10",
+          "mac_address": "0050.7966.6804",
+          "interface": "Vlan10",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "10.2.2.1",
+          "mac_address": "5000.0003.8014",
+          "interface": "Vlan20",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.10",
+          "mac_address": "5000.0003.83e7",
+          "interface": "Vlan999",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.11",
+          "mac_address": "5000.0001.0003",
+          "interface": "Vlan999",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.12",
+          "mac_address": "5000.0002.0002",
+          "interface": "Vlan999",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.13",
+          "mac_address": "5000.0006.0003",
+          "interface": "Vlan999",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.14",
+          "mac_address": "5000.0007.0003",
+          "interface": "Vlan999",
+          "entry_type": "ARPA"
+        },
+        {
+          "ip_address": "192.168.1.100",
+          "mac_address": "000c.2901.30df",
+          "interface": "Vlan999",
+          "entry_type": "ARPA"
+        }
+      ],
+      "static_routes": [],
+      "ospf_costs": [],
+      "neighbors": [
+        {
+          "local_interface": "GigabitEthernet0/3",
+          "remote_device": "R2",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "10.0.12.2"
+        },
+        {
+          "local_interface": "GigabitEthernet1/3",
+          "remote_device": "R2",
+          "remote_interface": "GigabitEthernet0/2",
+          "remote_ip": "192.168.1.12"
+        },
+        {
+          "local_interface": "GigabitEthernet1/3",
+          "remote_device": "R3",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.13"
+        },
+        {
+          "local_interface": "GigabitEthernet1/3",
+          "remote_device": "R1",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.11"
+        },
+        {
+          "local_interface": "GigabitEthernet0/0",
+          "remote_device": "R1",
+          "remote_interface": "GigabitEthernet0/0",
+          "remote_ip": "10.0.11.2"
+        },
+        {
+          "local_interface": "GigabitEthernet1/3",
+          "remote_device": "R4",
+          "remote_interface": "GigabitEthernet0/3",
+          "remote_ip": "192.168.1.14"
+        },
+        {
+          "local_interface": "",
+          "remote_device": "R4",
+          "remote_interface": "",
+          "remote_ip": "192.168.1.14"
+        }
+      ]
+    }
+  }
+}

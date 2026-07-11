@@ -1,0 +1,13 @@
+Value PROTOCOL (Internet|Internet6)
+Value IP (\d+\.\d+\.\d+\.\d+)
+Value AGE (\S+)
+Value MAC ([0-9a-f\.]+)
+Value TYPE (\S+)
+Value INTERFACE (\S+)
+
+Start
+  ^Protocol\s+Address -> Header
+  ^${PROTOCOL}\s+${IP}\s+${AGE}\s+${MAC}\s+${TYPE}\s+${INTERFACE}$$ -> Record
+
+Header
+  ^${PROTOCOL}\s+${IP}\s+${AGE}\s+${MAC}\s+${TYPE}\s+${INTERFACE}$$ -> Record

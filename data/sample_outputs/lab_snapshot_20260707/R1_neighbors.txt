@@ -1,0 +1,113 @@
+-------------------------
+Device ID: SW1.cisco.local
+Entry address(es): 
+  IP address: 10.0.11.1
+Platform: Cisco ,  Capabilities: Router Switch IGMP 
+Interface: GigabitEthernet0/0,  Port ID (outgoing port): GigabitEthernet0/0
+Holdtime : 162 sec
+
+Version :
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Experimental Version 15.2(20200924:215240) [sweickge-sep24-2020-l2iol-release 135]
+Copyright (c) 1986-2020 by Cisco Systems, Inc.
+Compiled Tue 29-Sep-20 11:53 by sweickge
+
+advertisement version: 2
+VTP Management Domain: ''
+Duplex: full
+Management address(es): 
+  IP address: 10.0.11.1
+
+-------------------------
+Device ID: SW1.cisco.local
+Entry address(es): 
+  IP address: 192.168.1.10
+Platform: Cisco ,  Capabilities: Router Switch IGMP 
+Interface: GigabitEthernet0/3,  Port ID (outgoing port): GigabitEthernet1/3
+Holdtime : 177 sec
+
+Version :
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Experimental Version 15.2(20200924:215240) [sweickge-sep24-2020-l2iol-release 135]
+Copyright (c) 1986-2020 by Cisco Systems, Inc.
+Compiled Tue 29-Sep-20 11:53 by sweickge
+
+advertisement version: 2
+VTP Management Domain: ''
+Native VLAN: 999
+Duplex: full
+Management address(es): 
+  IP address: 192.168.1.10
+
+-------------------------
+Device ID: R2.cisco.local
+Entry address(es): 
+  IP address: 192.168.1.12
+Platform: Cisco ,  Capabilities: Router Source-Route-Bridge 
+Interface: GigabitEthernet0/3,  Port ID (outgoing port): GigabitEthernet0/2
+Holdtime : 124 sec
+
+Version :
+Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.9(3)M9, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Thu 08-Feb-24 03:36 by mcpre
+
+advertisement version: 2
+Management address(es): 
+  IP address: 192.168.1.12
+
+-------------------------
+Device ID: R3.cisco.local
+Entry address(es): 
+  IP address: 192.168.1.13
+Platform: Cisco ,  Capabilities: Router Source-Route-Bridge 
+Interface: GigabitEthernet0/3,  Port ID (outgoing port): GigabitEthernet0/3
+Holdtime : 166 sec
+
+Version :
+Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.9(3)M9, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Thu 08-Feb-24 03:36 by mcpre
+
+advertisement version: 2
+Management address(es): 
+  IP address: 192.168.1.13
+
+-------------------------
+Device ID: R3.cisco.local
+Entry address(es): 
+  IP address: 10.13.1.2
+Platform: Cisco ,  Capabilities: Router Source-Route-Bridge 
+Interface: GigabitEthernet0/1,  Port ID (outgoing port): GigabitEthernet0/1
+Holdtime : 122 sec
+
+Version :
+Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.9(3)M9, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Thu 08-Feb-24 03:36 by mcpre
+
+advertisement version: 2
+Management address(es): 
+  IP address: 10.13.1.2
+
+-------------------------
+Device ID: R4.cisco.local
+Entry address(es): 
+  IP address: 192.168.1.14
+Platform: Cisco ,  Capabilities: Router Source-Route-Bridge 
+Interface: GigabitEthernet0/3,  Port ID (outgoing port): GigabitEthernet0/3
+Holdtime : 168 sec
+
+Version :
+Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.9(3)M9, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Thu 08-Feb-24 03:36 by mcpre
+
+advertisement version: 2
+Management address(es): 
+  IP address: 192.168.1.14
+
+
+Total cdp entries displayed : 6
