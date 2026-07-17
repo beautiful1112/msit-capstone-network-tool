@@ -1,0 +1,14 @@
+{
+  "description": "Force SW1 to prefer R1 for 8.8.8.8/32 via static route",
+  "source_ip": "10.1.1.10",
+  "destination_ip": "8.8.8.8",
+  "changes": [
+    {
+      "type": "static_route",
+      "device": "SW1",
+      "action": "add",
+      "prefix": "8.8.8.8/32",
+      "next_hop": "10.0.11.2"
+    }
+  ]
+}

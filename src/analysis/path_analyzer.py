@@ -35,12 +35,25 @@ class PathAnalysisResult:
     ecmp_alternatives: list[str] = field(default_factory=list)
 
 
+def _route_preference_key(route: RouteEntry) -> tuple[int, int]:
+    """Lower administrative distance, then lower metric, wins."""
+    ad = route.administrative_distance if route.administrative_distance is not None else 255
+    metric = route.metric if route.metric is not None else 10**9
+    return (ad, metric)
+
+
 def _select_routes(routes: list[RouteEntry]) -> tuple[RouteEntry, list[RouteEntry]]:
     if not routes:
         raise ValueError("No matching route")
-    ecmp = group_ecmp_candidates(routes)
-    primary = ecmp[0] if ecmp else routes[0]
-    return primary, ecmp[1:] if len(ecmp) > 1 else []
+    # Prefer best AD/metric before ECMP grouping (static AD 1 beats OSPF AD 110).
+    ordered = sorted(routes, key=_route_preference_key)
+    primary = ordered[0]
+    ecmp = group_ecmp_candidates(
+        [route for route in ordered if _route_preference_key(route) == _route_preference_key(primary)]
+    )
+    if not ecmp:
+        return primary, []
+    return ecmp[0], ecmp[1:]
 
 
 def _is_destination_local(device: str, destination_ip: str, network_state: NetworkState) -> bool:

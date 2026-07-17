@@ -1,31 +1,6 @@
-# =============================================================================
-# REPOSITORY SAFETY RULES — KEEP THIS FILE TRACKED
-# =============================================================================
-# Keep this file in Git so every clone protects credentials, virtual
-# environments, live snapshots, private design documents, and local evidence.
-# Review these rules before any broad git add or commit operation.
-# =============================================================================
-
-# Local design documents (submitted via Word / kept for local development)
-ARCHITECTURE.md
-docs/SYSTEM_DESIGN.md
-
-# Diagram source files (render to PNG for assignment submission)
-docs/diagrams/*.mmd
-
-# Local assignment/demo evidence. Commit selected sanitized evidence only after
-# explicit review, using git add -f for the chosen file.
-docs/evidence/
-
-# Local inventory override (optional; example file is committed)
-data/inventory/inventory.json
-
-# Credentials and secrets
-credentials.json
-data/credentials.json
-*.credentials.json
-.env
-.env.*
+# Public ignore rules for the Capstone repository (committed to GitHub).
+# Private / machine-local ignores belong in .gitignore.local
+# (applied via .git/info/exclude — never committed).
 
 # Python
 __pycache__/
@@ -39,23 +14,24 @@ build/
 venv/
 env/
 
+# Secrets (keep in the public rules so every clone is protected)
+credentials.json
+data/credentials.json
+*.credentials.json
+.env
+.env.*
+
+# Live collection snapshots (may contain device data)
+snapshots/*
+!snapshots/.gitkeep
+
 # IDE and OS
 .idea/
 .vscode/
 *.swp
 .DS_Store
 
-# Collected live snapshots (may contain sensitive device data)
-snapshots/*
-!snapshots/.gitkeep
-
-# Local test outputs
+# Test / coverage outputs
 .pytest_cache/
 .coverage
 htmlcov/
-
-# Report drafts (submitted separately to UoPeople)
-report/*.docx
-report/*.pdf
-
-.gitignore

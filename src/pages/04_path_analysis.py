@@ -13,41 +13,13 @@ import streamlit as st
 
 from src.analysis.path_analyzer import analyze_path
 from src.model.graph_builder import build_topology_graph
-from src.model.network_model import NetworkState
-from src.parser.normaliser import build_network_state
-from src.utils.file_loader import load_json
+from src.utils.snapshot_utils import discover_snapshots, load_network_state
 from src.visualization.topology_visualizer import render_topology_figure
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-
-
-def _discover_snapshots() -> list[Path]:
-    candidates: list[Path] = []
-    for base in (
-        PROJECT_ROOT / "snapshots",
-        PROJECT_ROOT / "data" / "sample_outputs",
-    ):
-        if not base.exists():
-            continue
-        for path in base.iterdir():
-            if not path.is_dir():
-                continue
-            if list(path.glob("*_ip_route.txt")) or (path / "manifest.json").exists():
-                candidates.append(path)
-    return sorted(candidates, key=lambda item: item.name, reverse=True)
-
-
-def _load_network_state(snapshot_path: Path) -> NetworkState:
-    json_path = snapshot_path / "network_state.json"
-    if json_path.exists():
-        return NetworkState.from_dict(load_json(json_path))
-    return build_network_state(snapshot_path)
-
 
 st.title("Path Analysis")
 st.caption("Hop-by-hop L3 path walk using collected route tables and CDP neighbours.")
 
-snapshots = _discover_snapshots()
+snapshots = discover_snapshots()
 if not snapshots:
     st.warning("No snapshots found. Run live collection first.")
     st.stop()
@@ -64,7 +36,7 @@ with col2:
 
 if st.button("Analyze Path", type="primary"):
     with st.spinner("Loading snapshot and analysing path..."):
-        network_state = _load_network_state(snapshot_path)
+        network_state = load_network_state(snapshot_path)
         result = analyze_path(network_state, source_ip.strip(), destination_ip.strip())
         graph = build_topology_graph(network_state)
 
