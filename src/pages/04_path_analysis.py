@@ -25,7 +25,14 @@ if not snapshots:
     st.stop()
 
 labels = [path.name for path in snapshots]
-selected_label = st.selectbox("Snapshot", labels, index=0)
+default_index = 0
+last = st.session_state.get("current_snapshot")
+if last:
+    last_name = Path(str(last)).name
+    if last_name in labels:
+        default_index = labels.index(last_name)
+
+selected_label = st.selectbox("Snapshot", labels, index=default_index)
 snapshot_path = snapshots[labels.index(selected_label)]
 
 col1, col2 = st.columns(2)
@@ -40,6 +47,14 @@ if st.button("Analyze Path", type="primary"):
         result = analyze_path(network_state, source_ip.strip(), destination_ip.strip())
         graph = build_topology_graph(network_state)
 
+    st.session_state["current_path_result"] = result
+    st.session_state["current_snapshot"] = str(snapshot_path)
+    st.session_state["analysis_snapshot_id"] = snapshot_path.name
+    # Clear stale simulation unless user re-runs it.
+    st.session_state.pop("simulated_path_result", None)
+    st.session_state.pop("comparison_result", None)
+    st.session_state.pop("planned_change_notes", None)
+
     st.subheader("Result")
     if result.reachable:
         st.success(f"Reachable: {' → '.join(result.path_devices)}")
@@ -49,6 +64,9 @@ if st.button("Analyze Path", type="primary"):
     if result.warnings:
         for warning in result.warnings:
             st.warning(warning)
+
+    if result.ecmp_alternatives:
+        st.info("ECMP alternatives: " + "; ".join(result.ecmp_alternatives))
 
     if result.hops:
         st.dataframe(
@@ -71,6 +89,7 @@ if st.button("Analyze Path", type="primary"):
     figure = render_topology_figure(
         graph,
         path_devices=result.path_devices,
-        title=f"Topology — {selected_label}",
+        title=f"Current path — {selected_label}",
     )
     st.pyplot(figure, clear_figure=True)
+    st.caption("Green nodes/edges mark the current forwarding path.")
