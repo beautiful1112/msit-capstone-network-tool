@@ -1,0 +1,204 @@
+{
+  "snapshot_id": "lab_snapshot_20260721",
+  "snapshot_path": "data/sample_outputs/lab_snapshot_20260721",
+  "started_at": "2026-07-21T14:20:59.682958+00:00",
+  "completed_at": "2026-07-21T14:21:17.003607+00:00",
+  "device_count": 5,
+  "devices": [
+    {
+      "hostname": "R1",
+      "mgmt_ip": "192.168.1.11",
+      "platform": "cisco_ios",
+      "status": "success",
+      "commands": {
+        "ip_route": {
+          "command": "show ip route",
+          "file": "R1_ip_route.txt",
+          "status": "success",
+          "bytes": 1891
+        },
+        "interfaces": {
+          "command": "show ip interface brief",
+          "file": "R1_interfaces.txt",
+          "status": "success",
+          "bytes": 424
+        },
+        "arp": {
+          "command": "show ip arp",
+          "file": "R1_arp.txt",
+          "status": "success",
+          "bytes": 550
+        },
+        "running_config": {
+          "command": "show running-config",
+          "file": "R1_running_config.txt",
+          "status": "success",
+          "bytes": 51
+        },
+        "neighbors": {
+          "command": "show cdp neighbors detail",
+          "file": "R1_neighbors.txt",
+          "status": "success",
+          "bytes": 1218
+        }
+      },
+      "errors": []
+    },
+    {
+      "hostname": "R2",
+      "mgmt_ip": "192.168.1.12",
+      "platform": "cisco_ios",
+      "status": "success",
+      "commands": {
+        "ip_route": {
+          "command": "show ip route",
+          "file": "R2_ip_route.txt",
+          "status": "success",
+          "bytes": 1945
+        },
+        "interfaces": {
+          "command": "show ip interface brief",
+          "file": "R2_interfaces.txt",
+          "status": "success",
+          "bytes": 424
+        },
+        "arp": {
+          "command": "show ip arp",
+          "file": "R2_arp.txt",
+          "status": "success",
+          "bytes": 710
+        },
+        "running_config": {
+          "command": "show running-config",
+          "file": "R2_running_config.txt",
+          "status": "success",
+          "bytes": 51
+        },
+        "neighbors": {
+          "command": "show cdp neighbors detail",
+          "file": "R2_neighbors.txt",
+          "status": "success",
+          "bytes": 1796
+        }
+      },
+      "errors": []
+    },
+    {
+      "hostname": "R3",
+      "mgmt_ip": "192.168.1.13",
+      "platform": "cisco_ios",
+      "status": "success",
+      "commands": {
+        "ip_route": {
+          "command": "show ip route",
+          "file": "R3_ip_route.txt",
+          "status": "success",
+          "bytes": 2072
+        },
+        "interfaces": {
+          "command": "show ip interface brief",
+          "file": "R3_interfaces.txt",
+          "status": "success",
+          "bytes": 509
+        },
+        "arp": {
+          "command": "show ip arp",
+          "file": "R3_arp.txt",
+          "status": "success",
+          "bytes": 710
+        },
+        "running_config": {
+          "command": "show running-config",
+          "file": "R3_running_config.txt",
+          "status": "success",
+          "bytes": 51
+        },
+        "neighbors": {
+          "command": "show cdp neighbors detail",
+          "file": "R3_neighbors.txt",
+          "status": "success",
+          "bytes": 1766
+        }
+      },
+      "errors": []
+    },
+    {
+      "hostname": "R4",
+      "mgmt_ip": "192.168.1.14",
+      "platform": "cisco_ios",
+      "status": "success",
+      "commands": {
+        "ip_route": {
+          "command": "show ip route",
+          "file": "R4_ip_route.txt",
+          "status": "success",
+          "bytes": 1946
+        },
+        "interfaces": {
+          "command": "show ip interface brief",
+          "file": "R4_interfaces.txt",
+          "status": "success",
+          "bytes": 509
+        },
+        "arp": {
+          "command": "show ip arp",
+          "file": "R4_arp.txt",
+          "status": "success",
+          "bytes": 550
+        },
+        "running_config": {
+          "command": "show running-config",
+          "file": "R4_running_config.txt",
+          "status": "success",
+          "bytes": 51
+        },
+        "neighbors": {
+          "command": "show cdp neighbors detail",
+          "file": "R4_neighbors.txt",
+          "status": "success",
+          "bytes": 1188
+        }
+      },
+      "errors": []
+    },
+    {
+      "hostname": "SW1",
+      "mgmt_ip": "192.168.1.10",
+      "platform": "cisco_ios",
+      "status": "success",
+      "commands": {
+        "ip_route": {
+          "command": "show ip route",
+          "file": "SW1_ip_route.txt",
+          "status": "success",
+          "bytes": 1996
+        },
+        "interfaces": {
+          "command": "show ip interface brief",
+          "file": "SW1_interfaces.txt",
+          "status": "success",
+          "bytes": 971
+        },
+        "arp": {
+          "command": "show ip arp",
+          "file": "SW1_arp.txt",
+          "status": "success",
+          "bytes": 800
+        },
+        "running_config": {
+          "command": "show running-config",
+          "file": "SW1_running_config.txt",
+          "status": "success",
+          "bytes": 52
+        },
+        "neighbors": {
+          "command": "show cdp neighbors detail",
+          "file": "SW1_neighbors.txt",
+          "status": "success",
+          "bytes": 1188
+        }
+      },
+      "errors": []
+    }
+  ]
+}

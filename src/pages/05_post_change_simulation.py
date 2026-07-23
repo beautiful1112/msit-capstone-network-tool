@@ -1,5 +1,6 @@
 """Post-change routing simulation page."""
 
+import json
 import sys
 from pathlib import Path
 
@@ -16,7 +17,7 @@ from src.analysis.path_analyzer import analyze_path
 from src.model.graph_builder import build_topology_graph
 from src.simulation.model_copy import OspfCostChange, StaticRouteChange
 from src.simulation import apply_planned_changes
-from src.utils.snapshot_utils import discover_snapshots, load_network_state
+from src.utils.snapshot_utils import discover_snapshots, load_network_state, project_root
 from src.visualization.topology_visualizer import render_topology_figure
 
 
@@ -25,7 +26,6 @@ def _device_interfaces(network_state, hostname: str) -> list[str]:
     if device is None:
         return []
     names = {iface.interface for iface in device.interfaces if iface.interface}
-    # Prefer L3-looking names first; keep stable sort.
     return sorted(names)
 
 
@@ -44,6 +44,17 @@ def _hops_table(hops):
     ]
 
 
+def _discover_scenarios() -> list[Path]:
+    folder = project_root() / "data" / "planned_changes"
+    if not folder.exists():
+        return []
+    return sorted(folder.glob("*.json"))
+
+
+def _load_scenario(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 st.title("Post-Change Simulation")
 st.caption(
     "Apply planned static-route or OSPF-cost changes to a **copied** model "
@@ -56,7 +67,14 @@ if not snapshots:
     st.stop()
 
 labels = [path.name for path in snapshots]
-selected_label = st.selectbox("Snapshot", labels, index=0, key="sim_snapshot")
+default_index = 0
+last = st.session_state.get("current_snapshot")
+if last:
+    last_name = Path(str(last)).name
+    if last_name in labels:
+        default_index = labels.index(last_name)
+
+selected_label = st.selectbox("Snapshot", labels, index=default_index, key="sim_snapshot")
 snapshot_path = snapshots[labels.index(selected_label)]
 
 col1, col2 = st.columns(2)
@@ -67,6 +85,36 @@ with col2:
 
 network_state = load_network_state(snapshot_path)
 devices = sorted(network_state.devices.keys())
+
+st.subheader("Scenario templates")
+scenarios = _discover_scenarios()
+scenario_labels = ["(manual — build changes below)"] + [path.name for path in scenarios]
+chosen = st.selectbox("Load planned-change JSON", scenario_labels)
+if chosen != "(manual — build changes below)" and st.button("Apply scenario defaults"):
+    scenario = _load_scenario(next(path for path in scenarios if path.name == chosen))
+    st.session_state["sim_src"] = scenario.get("source_ip", source_ip)
+    st.session_state["sim_dst"] = scenario.get("destination_ip", destination_ip)
+    changes = scenario.get("changes") or []
+    st.session_state.planned_change_rows = max(1, len(changes))
+    for index, change in enumerate(changes):
+        change_type = change.get("type", "static_route")
+        st.session_state[f"chg_device_{index}"] = change.get("device", devices[0])
+        if change_type == "ospf_cost":
+            st.session_state[f"chg_type_{index}"] = "OSPF cost"
+            st.session_state[f"chg_iface_{index}"] = change.get(
+                "interface", "GigabitEthernet0/3"
+            )
+            st.session_state[f"chg_cost_{index}"] = int(change.get("new_cost", 100))
+        else:
+            st.session_state[f"chg_type_{index}"] = "Static route"
+            st.session_state[f"chg_action_{index}"] = change.get("action", "add")
+            st.session_state[f"chg_prefix_{index}"] = change.get("prefix", "8.8.8.8/32")
+            st.session_state[f"chg_nh_{index}"] = change.get("next_hop", "10.0.11.2")
+    st.session_state["scenario_description"] = scenario.get("description", chosen)
+    st.rerun()
+
+if st.session_state.get("scenario_description"):
+    st.caption(st.session_state["scenario_description"])
 
 st.subheader("Planned changes")
 st.markdown(
@@ -85,9 +133,11 @@ with c_add:
 with c_clear:
     if st.button("Clear changes"):
         st.session_state.planned_change_rows = 1
+        st.session_state.pop("scenario_description", None)
         st.rerun()
 
 planned_changes = []
+change_notes: list[str] = []
 for index in range(st.session_state.planned_change_rows):
     st.markdown(f"**Change {index + 1}**")
     left, right = st.columns(2)
@@ -128,8 +178,18 @@ for index in range(st.session_state.planned_change_rows):
                     next_hop=next_hop.strip() or None,
                 )
             )
+            change_notes.append(
+                f"Static {action} on {device}: {prefix.strip()} via {next_hop.strip() or 'n/a'}"
+            )
         else:
             interfaces = _device_interfaces(network_state, device) or ["GigabitEthernet0/0"]
+            if f"chg_iface_{index}" not in st.session_state:
+                preferred = (
+                    "GigabitEthernet0/3"
+                    if "GigabitEthernet0/3" in interfaces
+                    else interfaces[0]
+                )
+                st.session_state[f"chg_iface_{index}"] = preferred
             interface = st.selectbox(
                 "Interface",
                 interfaces,
@@ -148,6 +208,9 @@ for index in range(st.session_state.planned_change_rows):
                     interface=interface,
                     new_cost=int(new_cost),
                 )
+            )
+            change_notes.append(
+                f"OSPF cost on {device} {interface} -> {int(new_cost)}"
             )
 
 propagate = st.checkbox(
@@ -172,6 +235,9 @@ if st.button("Run simulation", type="primary"):
     st.session_state["comparison_result"] = comparison
     st.session_state["current_path_result"] = current
     st.session_state["simulated_path_result"] = simulated
+    st.session_state["current_snapshot"] = str(snapshot_path)
+    st.session_state["analysis_snapshot_id"] = snapshot_path.name
+    st.session_state["planned_change_notes"] = change_notes
 
     st.subheader("Comparison summary")
     if comparison.path_changed:
@@ -204,12 +270,14 @@ if st.button("Run simulation", type="primary"):
         for warning in comparison.warnings:
             st.caption(f"• {warning}")
 
-    st.subheader("Topology (simulated path highlighted)")
+    st.subheader("Topology (current vs simulated)")
     figure = render_topology_figure(
         graph,
-        path_devices=simulated.path_devices,
-        title=f"Simulated path — {selected_label}",
+        path_devices=current.path_devices,
+        simulated_path=simulated.path_devices,
+        title=f"Current vs simulated — {selected_label}",
     )
     st.pyplot(figure, clear_figure=True)
+    st.caption("Green = current · Blue = simulated · Purple = on both")
 
-    st.info("Open the Comparison page for a side-by-side persisted view of the last run.")
+    st.info("Open the Comparison or Export page for the persisted session result.")

@@ -48,7 +48,10 @@ def test_parse_routes_ecmp_continuation():
 
 
 def test_parse_live_sw1_routes_from_lab_snapshot():
-    snapshot = Path(__file__).resolve().parents[1] / "data" / "sample_outputs" / "lab_snapshot_20260707"
+    root = Path(__file__).resolve().parents[1] / "data" / "sample_outputs"
+    snapshot = root / "lab_snapshot_20260721"
+    if not (snapshot / "SW1_ip_route.txt").exists():
+        snapshot = root / "lab_snapshot_20260707"
     if not (snapshot / "SW1_ip_route.txt").exists():
         pytest.skip("Lab snapshot not available")
     text = (snapshot / "SW1_ip_route.txt").read_text(encoding="utf-8")
@@ -57,6 +60,25 @@ def test_parse_live_sw1_routes_from_lab_snapshot():
     assert "8.8.8.8/32" in prefixes
     assert "10.1.1.0/24" in prefixes
     assert len([r for r in routes if r.prefix == "8.8.8.8/32"]) >= 2
+
+
+def test_parse_neighbors_skips_incomplete_duplicates():
+    from src.parser.neighbor_parser import parse_neighbors
+
+    snapshot = (
+        Path(__file__).resolve().parents[1]
+        / "data"
+        / "sample_outputs"
+        / "lab_snapshot_20260721"
+        / "SW1_neighbors.txt"
+    )
+    if not snapshot.exists():
+        pytest.skip("Lab snapshot not available")
+    neighbors = parse_neighbors(snapshot.read_text(encoding="utf-8"))
+    assert neighbors
+    assert all(item.local_interface for item in neighbors)
+    pairs = {(item.local_interface, item.remote_device) for item in neighbors}
+    assert len(pairs) == len(neighbors)
 
 
 def test_build_network_state_from_snapshot(tmp_path: Path):

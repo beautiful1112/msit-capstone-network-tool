@@ -11,6 +11,10 @@ import bootstrap  # noqa: F401
 
 import streamlit as st
 
+from src.model.graph_builder import build_topology_graph
+from src.utils.snapshot_utils import discover_snapshots, load_network_state
+from src.visualization.topology_visualizer import render_topology_figure
+
 st.title("Change Impact Comparison")
 st.caption("Shows the last post-change simulation run stored in this session.")
 
@@ -82,3 +86,33 @@ if simulated and simulated.hops:
         use_container_width=True,
         hide_index=True,
     )
+
+st.subheader("Topology overlay")
+st.caption("Green = current path · Blue = simulated path · Purple = on both")
+
+snapshot_hint = st.session_state.get("current_snapshot") or st.session_state.get(
+    "analysis_snapshot_id"
+)
+snapshot_path = None
+if snapshot_hint:
+    candidate = Path(str(snapshot_hint))
+    if candidate.exists():
+        snapshot_path = candidate
+    else:
+        for path in discover_snapshots():
+            if path.name == candidate.name or path.name == str(snapshot_hint):
+                snapshot_path = path
+                break
+
+if snapshot_path is not None:
+    network_state = load_network_state(snapshot_path)
+    graph = build_topology_graph(network_state)
+    figure = render_topology_figure(
+        graph,
+        path_devices=comparison.current_path,
+        simulated_path=comparison.simulated_path,
+        title=f"Current vs simulated — {snapshot_path.name}",
+    )
+    st.pyplot(figure, clear_figure=True)
+else:
+    st.info("Snapshot path not available in session; topology overlay skipped.")

@@ -1,0 +1,38 @@
+-------------------------
+Device ID: R2.cisco.local
+Entry address(es): 
+  IP address: 10.0.12.2
+Platform: Cisco ,  Capabilities: Router Source-Route-Bridge 
+Interface: GigabitEthernet0/3,  Port ID (outgoing port): GigabitEthernet0/3
+Holdtime : 145 sec
+
+Version :
+Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.9(3)M9, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Thu 08-Feb-24 03:36 by mcpre
+
+advertisement version: 2
+Management address(es): 
+  IP address: 10.0.12.2
+
+-------------------------
+Device ID: R1.cisco.local
+Entry address(es): 
+  IP address: 10.0.11.2
+Platform: Cisco ,  Capabilities: Router Source-Route-Bridge 
+Interface: GigabitEthernet0/0,  Port ID (outgoing port): GigabitEthernet0/0
+Holdtime : 138 sec
+
+Version :
+Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.9(3)M9, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Thu 08-Feb-24 03:36 by mcpre
+
+advertisement version: 2
+Management address(es): 
+  IP address: 10.0.11.2
+
+
+Total cdp entries displayed : 2

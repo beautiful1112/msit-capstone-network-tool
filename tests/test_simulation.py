@@ -12,15 +12,28 @@ LAB_SNAPSHOT = (
     Path(__file__).resolve().parents[1]
     / "data"
     / "sample_outputs"
+    / "lab_snapshot_20260721"
+)
+LEGACY_SNAPSHOT = (
+    Path(__file__).resolve().parents[1]
+    / "data"
+    / "sample_outputs"
     / "lab_snapshot_20260707"
 )
 
 
+def _resolve_lab_snapshot() -> Path:
+    if (LAB_SNAPSHOT / "SW1_ip_route.txt").exists():
+        return LAB_SNAPSHOT
+    return LEGACY_SNAPSHOT
+
+
 @pytest.fixture
 def lab_state():
-    if not (LAB_SNAPSHOT / "SW1_ip_route.txt").exists():
+    snapshot = _resolve_lab_snapshot()
+    if not (snapshot / "SW1_ip_route.txt").exists():
         pytest.skip("Lab snapshot not available")
-    return build_network_state(LAB_SNAPSHOT)
+    return build_network_state(snapshot)
 
 
 def test_static_route_add_changes_path_toward_r1(lab_state):

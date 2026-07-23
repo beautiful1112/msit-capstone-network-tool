@@ -18,6 +18,9 @@ def build_topology_graph(network_state: NetworkState) -> nx.Graph:
         for neighbor in device.neighbors:
             if not neighbor.remote_device:
                 continue
+            # Ignore incomplete CDP entries that have no local interface binding.
+            if not (neighbor.local_interface or "").strip():
+                continue
             remote = normalize_hostname(neighbor.remote_device)
             if remote == local:
                 continue

@@ -1,0 +1,32 @@
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+
+Gateway of last resort is not set
+
+      1.0.0.0/32 is subnetted, 1 subnets
+C        1.1.1.1 is directly connected, Loopback0
+      8.0.0.0/32 is subnetted, 1 subnets
+O        8.8.8.8 [110/2] via 10.34.1.1, 00:02:42, GigabitEthernet0/2
+      10.0.0.0/8 is variably subnetted, 10 subnets, 3 masks
+O        10.0.11.0/30 [110/3] via 10.34.1.1, 00:02:32, GigabitEthernet0/2
+                      [110/3] via 10.24.1.1, 00:02:32, GigabitEthernet0/1
+O        10.0.12.0/30 [110/2] via 10.24.1.1, 00:02:32, GigabitEthernet0/1
+O        10.1.1.0/24 [110/3] via 10.24.1.1, 00:02:32, GigabitEthernet0/1
+O        10.2.2.0/24 [110/3] via 10.24.1.1, 00:02:32, GigabitEthernet0/1
+O        10.13.1.0/30 [110/2] via 10.34.1.1, 00:02:42, GigabitEthernet0/2
+O        10.23.1.0/30 [110/2] via 10.34.1.1, 00:02:42, GigabitEthernet0/2
+                      [110/2] via 10.24.1.1, 00:02:32, GigabitEthernet0/1
+C        10.24.1.0/30 is directly connected, GigabitEthernet0/1
+L        10.24.1.2/32 is directly connected, GigabitEthernet0/1
+C        10.34.1.0/30 is directly connected, GigabitEthernet0/2
+L        10.34.1.2/32 is directly connected, GigabitEthernet0/2
+      192.168.1.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.1.0/24 is directly connected, GigabitEthernet0/3
+L        192.168.1.14/32 is directly connected, GigabitEthernet0/3
